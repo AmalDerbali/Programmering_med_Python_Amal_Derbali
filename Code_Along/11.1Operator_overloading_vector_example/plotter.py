@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 class PlotVectors:
     """Plotting several vectors in cartesian coordinate system"""
