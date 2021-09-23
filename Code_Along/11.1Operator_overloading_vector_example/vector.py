@@ -1,3 +1,5 @@
+from plotter import PlotVectors
+
 class Vector: 
     """ A class to represent a Euclidean vector with magnitude and direction"""
 
@@ -71,6 +73,15 @@ class Vector:
                 return False
         
         return True
+    
+
+    def plot(self, *others: "Vector") -> None:
+        # TODO: error checking
+
+        # composition -> Vector has a PlotVectors object
+        plot_vector = PlotVectors(self, *others)
+        
+        plot_vector.plot()
 
 
 # v1 = (1,1), v2=(1,1,14,5,252,56,2,7)
