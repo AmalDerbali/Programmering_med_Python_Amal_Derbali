@@ -33,7 +33,7 @@ class GeometricClass:
 
 
 class Circle (GeometricClass):
-    def __init__ (self, x_value, y_value, radius:float) -> None:
+    def __init__ (self, radius:float, x_value = 0, y_value = 0) -> None:
         super().__init__(x_value, y_value)
         self.radius = radius
 
@@ -59,9 +59,18 @@ class Circle (GeometricClass):
     # checking if a point is inside the circle based on : 
     # https://math.stackexchange.com/questions/198764/how-to-know-if-a-point-is-inside-a-circle
 
-    def inside_circle (self, x, y):
+    def point_inside_circle (self, x, y):
         euclidean = (((self.x_value - x)**2 + (self.y_value - y)**2)**0.5)
         if euclidean < self.radius:
+            return True
+        else:
+            return False
+    
+    def __eq__(self, other):
+        if type(self) != type(other):
+            return False
+
+        if self.radius == other.radius:
             return True
         else:
             return False
@@ -75,7 +84,7 @@ class Circle (GeometricClass):
 
 
 class Rectangle (GeometricClass):
-    def __init__ (self, x_value, y_value, side1: float, side2: float) -> None:
+    def __init__ (self, side1: float, side2: float, x_value = 0, y_value = 0) -> None:
         super().__init__(x_value, y_value)
         self.side1 = side1
         self.side2 = side2
@@ -110,4 +119,19 @@ class Rectangle (GeometricClass):
         return self.side1*self.side2
     
     def circumference_rectangle(self):
-        return ((self.side1*2)+(self.side2*2))   
+        return ((self.side1*2)+(self.side2*2)) 
+
+    def point_inside_rectangle (self, x1, y1, x2, y2):
+        if (self.x_value > x1 and self.x_value < x2 and self.y_value > y1 and self.y_value < y2):
+            return True
+        else :
+            return False 
+
+    def __eq__(self, other):
+        if type(self) != type(other):
+            return False
+            
+        if self.side1 == other.side1 and self.side2 == other.side2 :
+            return True
+        else:
+            return False 
