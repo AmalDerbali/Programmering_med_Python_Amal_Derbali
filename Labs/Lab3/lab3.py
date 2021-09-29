@@ -15,8 +15,8 @@ class GeometricClass:
     
     @x_value.setter
     def x_value(self, x_value: float) -> None:
-        if not isinstance(x_value, (float)):
-            raise TypeError (f"The value x must be a float, not a {type(x_value)}.")
+        if not isinstance(x_value, (int, float)):
+            raise TypeError (f"The value x must be an int or a float, not a {type(x_value)}.")
         if x_value <= 0:
             raise TypeError(f"The value x must be > 0.")
         self._x_value = x_value
@@ -24,12 +24,16 @@ class GeometricClass:
 
     @y_value.setter
     def y_value(self, y_value: float) -> None:
-        if not isinstance(y_value, (float)):
+        if not isinstance(y_value, (int, float)):
             raise TypeError (f"The value y must be a float, not a {type(y_value)}.")
         if y_value <= 0:
             raise TypeError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
+    
+    def translate(self):
+        self._x_value = GeometricClass.self.x_value
+        self._y_value = GeometricClass.self.y_value
 
 
 class Circle (GeometricClass):
