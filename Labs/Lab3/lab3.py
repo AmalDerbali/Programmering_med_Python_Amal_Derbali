@@ -1,7 +1,7 @@
 import math
 
 class GeometricClass:
-    def __init__(self, x_value : float = 0, y_value:float = 0) -> None:
+    def __init__(self, x_value : float = 0, y_value: float = 0) -> None:
         self.x_value = x_value
         self.y_value = y_value
     
@@ -17,7 +17,7 @@ class GeometricClass:
     def x_value(self, x_value: float) -> None:
         if not isinstance(x_value, (int, float)):
             raise TypeError (f"The value x must be an int or a float, not a {type(x_value)}.")
-        if x_value <= 0:
+        if x_value < 0:
             raise TypeError(f"The value x must be > 0.")
         self._x_value = x_value
         return self._x_value
@@ -26,18 +26,18 @@ class GeometricClass:
     def y_value(self, y_value: float) -> None:
         if not isinstance(y_value, (int, float)):
             raise TypeError (f"The value y must be a float, not a {type(y_value)}.")
-        if y_value <= 0:
+        if y_value < 0:
             raise TypeError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
     
     def translate(self):
-        self._x_value = GeometricClass.self.x_value
-        self._y_value = GeometricClass.self.y_value
+        self._x_value = GeometricClass.x_value
+        self._y_value = GeometricClass.y_value
 
 
 class Circle (GeometricClass):
-    def __init__ (self, radius:float, x_value = 0, y_value = 0) -> None:
+    def __init__ (self, radius:float, x_value: float = 0, y_value: float = 0) -> None:
         super().__init__(x_value, y_value)
         self.radius = radius
 
