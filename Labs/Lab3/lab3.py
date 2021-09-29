@@ -1,5 +1,5 @@
 import math
-
+ 
 class GeometricClass:
     def __init__(self, x_value : float = 0, y_value: float = 0) -> None:
         self.x_value = x_value
@@ -30,12 +30,8 @@ class GeometricClass:
             raise TypeError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
-    
-    def translate(self):
-        self._x_value = GeometricClass.x_value
-        self._y_value = GeometricClass.y_value
-
-
+        
+        
 class Circle (GeometricClass):
     def __init__ (self, radius:float, x_value: float = 0, y_value: float = 0) -> None:
         super().__init__(x_value, y_value)
@@ -79,7 +75,7 @@ class Circle (GeometricClass):
         else:
             return False
 
-
+        
 
 
 
@@ -125,6 +121,7 @@ class Rectangle (GeometricClass):
     def circumference_rectangle(self):
         return ((self.side1*2)+(self.side2*2)) 
 
+    #https://www.geeksforgeeks.org/check-if-a-point-lies-on-or-inside-a-rectangle-set-2/
     def point_inside_rectangle (self, x1, y1, x2, y2):
         if (self.x_value > x1 and self.x_value < x2 and self.y_value > y1 and self.y_value < y2):
             return True
