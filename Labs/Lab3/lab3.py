@@ -30,7 +30,13 @@ class GeometricClass:
             raise TypeError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
-        
+    
+    def translate(self, x_new:float, y_new:float) -> None:
+        self._x_new_value = GeometricClass(x_new)
+        self._y_new_value = GeometricClass(y_new)
+    
+    def __repr__(self) -> str: #Returns information about the size and position of the geometric figure
+        pass
         
 class Circle (GeometricClass):
     def __init__ (self, radius:float, x_value: float = 0, y_value: float = 0) -> None:
@@ -74,7 +80,10 @@ class Circle (GeometricClass):
             return True
         else:
             return False
-
+    
+    def translate(self, x_new_value:float, y_new_value:float) -> None:
+        self._x_value = GeometricClass(x_new_value)
+        self._y_value = GeometricClass(y_new_value)
         
 
 
@@ -136,3 +145,7 @@ class Rectangle (GeometricClass):
             return True
         else:
             return False 
+    
+    def translate(self, x_new:float, y_new:float) -> None:
+        self._x_new_value = GeometricClass(x_new)
+        self._y_new_value = GeometricClass(y_new)
