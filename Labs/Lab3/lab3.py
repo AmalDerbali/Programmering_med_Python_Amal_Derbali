@@ -31,7 +31,19 @@ class GeometricClass:
         self._y_value = y_value
         return self._y_value
     
-    
+    def translate(self, X, Y) -> None:
+        if not isinstance (X, (float)):
+            raise ValueError ("The value X must be float")
+        if not isinstance (Y, (float)):
+            raise ValueError ("The value Y must be float")
+        if X==0 or Y==0:
+            raise ValueError("Values can't be 0")
+        if X<0 or Y<0:
+            raise ValueError("Values can't be negative")
+        self._x_value = X
+        self._y_value = Y
+        
+
     def __repr__(self) -> str: #Returns information about the size and position of the geometric figure
         pass
         
@@ -78,24 +90,7 @@ class Circle (GeometricClass):
         else:
             return False
     
-    def translate(self, X, Y) -> None:
-        if not isinstance ((X,Y), (float)):
-            raise TypeError ("The value must be float")
-        if X==0 or Y==0:
-            raise ValueError("Values can't be 0")
-        if X<0 or Y<0:
-            raise ValueError("Values can't be negative")
-
-        self._x_value = X
-        self._y_value = Y
- 
-
-    
         
-    
-        
-
-
 
 
 
@@ -155,7 +150,4 @@ class Rectangle (GeometricClass):
         else:
             return False 
     
-    def translate(self, x_new:float, y_new:float, x_value, y_value) -> None:
-        super().__init__(x_value, y_value)
-        self._x_new_value = GeometricClass(x_new)
-        self._y_new_value = GeometricClass(y_new)
+    
