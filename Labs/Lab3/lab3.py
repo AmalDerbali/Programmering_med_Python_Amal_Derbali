@@ -31,18 +31,18 @@ class GeometricClass:
         self._y_value = y_value
         return self._y_value
     
-    def translate(self, X, Y) -> None:
-        if not isinstance (X, (float)):
-            raise ValueError ("The value X must be float")
-        if not isinstance (Y, (float)):
-            raise ValueError ("The value Y must be float")
-        if X==0 or Y==0:
+    def translate(self, x_new, y_new) -> None:
+        if not isinstance (x_new, (float)):
+            raise ValueError ("The value x_new must be float")
+        if not isinstance (y_new, (float)):
+            raise ValueError ("The value y_new must be float")
+        if x_new==0 or y_new==0:
             raise ValueError("Values can't be 0")
-        if X<0 or Y<0:
+        if x_new<0 or y_new<0:
             raise ValueError("Values can't be negative")
-        self._x_value = X
-        self._y_value = Y
-        
+        self._x_value = x_new
+        self._y_value = y_new
+
 
     def __repr__(self) -> str: #Returns information about the size and position of the geometric figure
         pass
