@@ -15,25 +15,22 @@ class GeometricClass:
     
     @x_value.setter
     def x_value(self, x_value: float) -> None:
-        if not isinstance(x_value, (int, float)):
-            raise TypeError (f"The value x must be an int or a float, not a {type(x_value)}.")
+        if not isinstance(x_value, (float)):
+            raise ValueError (f"The value x must be a float, not a {type(x_value)}.")
         if x_value < 0:
-            raise TypeError(f"The value x must be > 0.")
+            raise ValueError(f"The value x must be > 0.")
         self._x_value = x_value
         return self._x_value
 
     @y_value.setter
     def y_value(self, y_value: float) -> None:
-        if not isinstance(y_value, (int, float)):
-            raise TypeError (f"The value y must be a float, not a {type(y_value)}.")
+        if not isinstance(y_value, (float)):
+            raise ValueError (f"The value y must be a float, not a {type(y_value)}.")
         if y_value < 0:
-            raise TypeError(f"The value y must be > 0.")
+            raise ValueError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
     
-    def translate(self, x_new:float, y_new:float) -> None:
-        self._x_new_value = GeometricClass(x_new)
-        self._y_new_value = GeometricClass(y_new)
     
     def __repr__(self) -> str: #Returns information about the size and position of the geometric figure
         pass
@@ -81,9 +78,21 @@ class Circle (GeometricClass):
         else:
             return False
     
-    def translate(self, x_new_value:float, y_new_value:float) -> None:
-        self._x_value = GeometricClass(x_new_value)
-        self._y_value = GeometricClass(y_new_value)
+    def translate(self, X, Y) -> None:
+        if not isinstance ((X,Y), (float)):
+            raise TypeError ("The value must be float")
+        if X==0 or Y==0:
+            raise ValueError("Values can't be 0")
+        if X<0 or Y<0:
+            raise ValueError("Values can't be negative")
+
+        self._x_value = X
+        self._y_value = Y
+ 
+
+    
+        
+    
         
 
 
@@ -146,6 +155,7 @@ class Rectangle (GeometricClass):
         else:
             return False 
     
-    def translate(self, x_new:float, y_new:float) -> None:
+    def translate(self, x_new:float, y_new:float, x_value, y_value) -> None:
+        super().__init__(x_value, y_value)
         self._x_new_value = GeometricClass(x_new)
         self._y_new_value = GeometricClass(y_new)
