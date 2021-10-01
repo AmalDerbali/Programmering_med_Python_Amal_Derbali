@@ -149,15 +149,18 @@ class Rectangle (GeometricClass):
         else:
             return False 
     
-    def translate(self, x1_new, y1_new) -> None:
-        if not isinstance (x1_new, (float)):
+    def translate(self, x_new, y_new) -> None:
+        if not isinstance (x_new, (float)):
             raise ValueError ("The value x_new must be float")
-        if not isinstance (y1_new, (float)):
+        if not isinstance (y_new, (float)):
             raise ValueError ("The value y_new must be float")
-        if x1_new==0 or y1_new==0:
+        if x_new==0 or y_new==0:
             raise ValueError("Values can't be 0")
-        if x1_new<0 or y1_new<0:
+        if x_new<0 or y_new<0:
             raise ValueError("Values can't be negative")
-        self._x_value = x1_new
-        self._y_value = y1_new   
+        self._x_value = x_new
+        self._y_value = y_new   
+    
+    def __repr__(self):
+        return f"The side1 of the rectangle is {self.side1}, and the side2 is {self.side2}. The geometric center is: ({self.x_value}, {self.y_value})."
     
