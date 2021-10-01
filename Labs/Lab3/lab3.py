@@ -30,22 +30,8 @@ class GeometricClass:
             raise ValueError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
-    
-    def translate(self, x_new, y_new) -> None:
-        if not isinstance (x_new, (float)):
-            raise ValueError ("The value x_new must be float")
-        if not isinstance (y_new, (float)):
-            raise ValueError ("The value y_new must be float")
-        if x_new==0 or y_new==0:
-            raise ValueError("Values can't be 0")
-        if x_new<0 or y_new<0:
-            raise ValueError("Values can't be negative")
-        self._x_value = x_new
-        self._y_value = y_new
 
 
-    def __repr__(self) -> str: #Returns information about the size and position of the geometric figure
-        pass
         
 class Circle (GeometricClass):
     def __init__ (self, radius:float, x_value: float = 0, y_value: float = 0) -> None:
@@ -65,6 +51,7 @@ class Circle (GeometricClass):
         self._radius = radius
         return self._radius
     
+
     def area_circle (self):
         return ((self.radius**2)*math.pi)
     
@@ -90,7 +77,20 @@ class Circle (GeometricClass):
         else:
             return False
     
-        
+    def translate(self, x_new, y_new) -> None:
+        if not isinstance (x_new, (float)):
+            raise ValueError ("The value x_new must be float")
+        if not isinstance (y_new, (float)):
+            raise ValueError ("The value y_new must be float")
+        if x_new==0 or y_new==0:
+            raise ValueError("Values can't be 0")
+        if x_new<0 or y_new<0:
+            raise ValueError("Values can't be negative")
+        self._x_value = x_new
+        self._y_value = y_new   
+
+    def __repr__(self): # gives informations about the size and position of a circle.
+        return f"The radius of the circle is: {self.radius}. The geometric center is: ({self.x_value}, {self.y_value})." 
 
 
 
@@ -134,9 +134,8 @@ class Rectangle (GeometricClass):
     def circumference_rectangle(self):
         return ((self.side1*2)+(self.side2*2)) 
 
-    #https://www.geeksforgeeks.org/check-if-a-point-lies-on-or-inside-a-rectangle-set-2/
-    def point_inside_rectangle (self, x1, y1, x2, y2):
-        if (self.x_value > x1 and self.x_value < x2 and self.y_value > y1 and self.y_value < y2):
+    def point_inside_rectangle (self, x1, y1):
+        if (self.x_value - self.side1/2) <= x1 <= (self.x_value + self.side1/2) and (self.y_value - self.side2/2) <= y1 <= (self.y_value + self.side2/2):
             return True
         else :
             return False 
@@ -150,4 +149,15 @@ class Rectangle (GeometricClass):
         else:
             return False 
     
+    def translate(self, x1_new, y1_new) -> None:
+        if not isinstance (x1_new, (float)):
+            raise ValueError ("The value x_new must be float")
+        if not isinstance (y1_new, (float)):
+            raise ValueError ("The value y_new must be float")
+        if x1_new==0 or y1_new==0:
+            raise ValueError("Values can't be 0")
+        if x1_new<0 or y1_new<0:
+            raise ValueError("Values can't be negative")
+        self._x_value = x1_new
+        self._y_value = y1_new   
     
