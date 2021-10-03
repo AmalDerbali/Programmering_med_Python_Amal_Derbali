@@ -15,8 +15,8 @@ class GeometricClass:
     
     @x_value.setter
     def x_value(self, x_value: float) -> None:
-        if not isinstance(x_value, (float)):
-            raise ValueError (f"The value x must be a float, not a {type(x_value)}.")
+        if not isinstance(x_value, (int, float)):
+            raise ValueError (f"The value x must be int or float, not a {type(x_value)}.")
         if x_value < 0:
             raise ValueError(f"The value x must be > 0.")
         self._x_value = x_value
@@ -24,13 +24,24 @@ class GeometricClass:
 
     @y_value.setter
     def y_value(self, y_value: float) -> None:
-        if not isinstance(y_value, (float)):
-            raise ValueError (f"The value y must be a float, not a {type(y_value)}.")
+        if not isinstance(y_value, (int, float)):
+            raise ValueError (f"The value y must be int or float, not a {type(y_value)}.")
         if y_value < 0:
             raise ValueError(f"The value y must be > 0.")
         self._y_value = y_value
         return self._y_value
-
+    
+    def translate(self, new_x, new_y) -> None:
+        if not isinstance (new_x, (int, float)):
+            raise ValueError ("The value new_x must be float")
+        if not isinstance (new_y, (int, float)):
+            raise ValueError ("The value new_y must be float")
+        if new_x == 0 or new_y == 0:
+            raise ValueError("Values can't be 0")
+        if new_x < 0 or new_y < 0:
+            raise ValueError("Values can't be negative")
+        self._x_value = new_x
+        self._y_value = new_y 
 
         
 class Circle (GeometricClass):
@@ -44,7 +55,7 @@ class Circle (GeometricClass):
     
     @radius.setter
     def radius(self, radius: float) -> None:
-        if not isinstance(radius, (float)):
+        if not isinstance(radius, (int, float)):
             raise TypeError (f"The radius must be a float, not a {type(radius)}.")
         if radius <= 0:
             raise TypeError(f"The radius must be > 0.")
@@ -76,18 +87,7 @@ class Circle (GeometricClass):
             return True
         else:
             return False
-    
-    def translate(self, x_new, y_new) -> None:
-        if not isinstance (x_new, (float)):
-            raise ValueError ("The value x_new must be float")
-        if not isinstance (y_new, (float)):
-            raise ValueError ("The value y_new must be float")
-        if x_new==0 or y_new==0:
-            raise ValueError("Values can't be 0")
-        if x_new<0 or y_new<0:
-            raise ValueError("Values can't be negative")
-        self._x_value = x_new
-        self._y_value = y_new   
+     
 
     def __repr__(self): # gives informations about the size and position of a circle.
         return f"The radius of the circle is: {self.radius}. The geometric center is: ({self.x_value}, {self.y_value})." 
@@ -148,19 +148,7 @@ class Rectangle (GeometricClass):
             return True
         else:
             return False 
-    
-    def translate(self, x_new, y_new) -> None:
-        if not isinstance (x_new, (float)):
-            raise ValueError ("The value x_new must be float")
-        if not isinstance (y_new, (float)):
-            raise ValueError ("The value y_new must be float")
-        if x_new==0 or y_new==0:
-            raise ValueError("Values can't be 0")
-        if x_new<0 or y_new<0:
-            raise ValueError("Values can't be negative")
-        self._x_value = x_new
-        self._y_value = y_new   
-    
+      
     def __repr__(self):
         return f"The side1 of the rectangle is {self.side1}, and the side2 is {self.side2}. The geometric center is: ({self.x_value}, {self.y_value})."
     
