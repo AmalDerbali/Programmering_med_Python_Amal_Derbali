@@ -33,9 +33,9 @@ class GeometricClass:
     
     def translate(self, new_x, new_y) -> None:
         if not isinstance (new_x, (int, float)):
-            raise ValueError ("The value new_x must be float")
+            raise ValueError ("The value new_x must be int or float")
         if not isinstance (new_y, (int, float)):
-            raise ValueError ("The value new_y must be float")
+            raise ValueError ("The value new_y must be int or float")
         if new_x == 0 or new_y == 0:
             raise ValueError("Values can't be 0")
         if new_x < 0 or new_y < 0:
