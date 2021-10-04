@@ -1,6 +1,4 @@
-from geometry_shapes_2D import Circle
-import math
-from geometry_shapes_2D import Circle
+from geometry_shapes import Circle
 import math
 import matplotlib.pyplot as plt
 import numpy as np
