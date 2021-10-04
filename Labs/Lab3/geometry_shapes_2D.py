@@ -110,7 +110,7 @@ class Rectangle (GeometricClass):
     def side1(self, side1: float) -> None:
         if not isinstance(side1, (int, float)):
             raise TypeError (f"The side must be int or float, not a {type(side1)}.")
-        if side1 <= 0:
+        if side1 < 0:
             raise TypeError(f"The side must be > 0.")
         self._side1 = side1
         return self._side1 
@@ -123,7 +123,7 @@ class Rectangle (GeometricClass):
     def side2(self, side2: float) -> None:
         if not isinstance(side2, (int, float)):
             raise TypeError (f"The side must be int or float, not a {type(side2)}.")
-        if side2 <= 0:
+        if side2 < 0:
             raise TypeError(f"The side must be > 0.")
         self._side2 = side2
         return self._side2
