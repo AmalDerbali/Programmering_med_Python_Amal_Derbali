@@ -170,6 +170,58 @@ class TestSphere(unittest.TestCase):
         self.assertEqual(sph == rect, False)
 
 
+class TestCube(unittest.TestCase):
+    
+    def setUp(self) -> None:
+        self.edge, self.x_value, self.y_value, self.z_value = 2, 0, 0, 1
+    
+    def create_cube(self) -> "Cube":
+        return Cube(self.edge, self.x_value, self.y_value, self.z_value)
+
+    def test_create_cube(self):
+        cu = self.create_cube()
+        self.assertEqual((cu.edge, cu.x_value, cu.y_value, cu.z_value), (self.edge, self.x_value, self.y_value, self.z_value))
+
+        cu = Cube(3)
+        self.assertEqual((cu.edge, cu.x_value, cu.y_value, cu.z_value), (3, 0, 0, 0))
+    
+    def test_translate(self):
+        cu = self.create_cube()        
+        with self.assertRaises(TypeError):
+            cu.translate("4", 2, -2)
+        with self.assertRaises(TypeError):
+            cu.translate(4, "2", 1)
+
+    def test_translate(self):
+        cu = self.create_cube()        
+        cu.translate(3, 2, 1)
+        self.assertEqual((cu.x_value, cu.y_value, cu.z_value), (3, 2, 1))
+    
+    def test_surface_area_cube(self):
+        cu1 = Cube(2.5)
+        self.assertEqual(cu1.surface_area_cube(), 37.5)
+
+    def test_volume_cube(self):
+        cu2 = Cube(2.5)
+        self.assertEqual(cu2.volume_cube(), 15.625)   
+
+    def test_point_inside_cube(self):
+        cu = self.create_cube()
+        self.assertEqual(cu.point_inside_cube(1, 0, 1), True)
+        self.assertEqual(cu.point_inside_cube(1.3, -6, 3), False) 
+
+    def test_equality(self):
+        cu3 = Cube(3, 2, 5, 1)
+        cu4 = Cube(5, 2, 2, 3)
+        self.assertEqual(cu3 == cu4, False) 
+
+        sph = Sphere(4, 2, 3, 2)
+        cu = Cube(4, 2, 3, 2)
+        self.assertEqual(cu == sph, False)
+
+
+   
+    
 
     
 
