@@ -1,5 +1,4 @@
 from lab3 import Rectangle
-import math
 
 class Cube(Rectangle):
     def __init__(self, edge = float, x_value: float = 0, y_value: float = 0, z_value: float = 0) -> None:
@@ -55,3 +54,6 @@ class Cube(Rectangle):
          
     def __repr__(self):
         return f"The cube has an edge of {self.edge}. The geometric center is: ({self.x_value}, {self.y_value}, {self.z_value})."
+   
+
+    
