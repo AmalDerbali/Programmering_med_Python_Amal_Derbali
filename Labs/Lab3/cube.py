@@ -1,4 +1,4 @@
-from lab3 import Rectangle
+from geometry_shapes_2D import Rectangle
 
 class Cube(Rectangle):
     def __init__(self, edge = float, x_value: float = 0, y_value: float = 0, z_value: float = 0) -> None:

@@ -72,14 +72,14 @@ class Circle (GeometricClass):
     # checking if a point is inside the circle based on : 
     # https://math.stackexchange.com/questions/198764/how-to-know-if-a-point-is-inside-a-circle
 
-    def point_inside_circle (self, x, y):
+    def point_inside_circle (self, x, y) -> bool:
         euclidean = (((self.x_value - x)**2 + (self.y_value - y)**2)**0.5)
         if euclidean < self.radius:
             return True
         else:
             return False
     
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if type(self) != type(other):
             return False
 
@@ -89,7 +89,7 @@ class Circle (GeometricClass):
             return False
      
 
-    def __repr__(self): # gives informations about the size and position of a circle.
+    def __repr__(self) -> str: # gives informations about the size and position of a circle.
         return f"The radius of the circle is: {self.radius}. The geometric center is: ({self.x_value}, {self.y_value})." 
 
 
@@ -134,13 +134,13 @@ class Rectangle (GeometricClass):
     def circumference_rectangle(self):
         return ((self.side1*2)+(self.side2*2)) 
 
-    def point_inside_rectangle (self, x1, y1):
+    def point_inside_rectangle (self, x1, y1) -> bool:
         if (self.x_value - self.side1/2) <= x1 <= (self.x_value + self.side1/2) and (self.y_value - self.side2/2) <= y1 <= (self.y_value + self.side2/2):
             return True
         else :
             return False 
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if type(self) != type(other):
             return False
             
@@ -149,6 +149,6 @@ class Rectangle (GeometricClass):
         else:
             return False 
       
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"The side1 of the rectangle is {self.side1}, and the side2 is {self.side2}. The geometric center is: ({self.x_value}, {self.y_value})."
     
