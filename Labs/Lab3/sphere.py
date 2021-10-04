@@ -5,7 +5,7 @@ import math
 
 class Sphere (Circle):
     def __init__ (self, radius:float, x_value: float = 0, y_value: float = 0, z_value: float = 0) -> None:
-        super().__init__(x_value, y_value, radius)
+        super().__init__(radius, x_value, y_value)
         self.z_value = z_value
     
     @property
