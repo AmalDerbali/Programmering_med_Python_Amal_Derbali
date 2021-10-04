@@ -2,8 +2,9 @@ from geometry_shapes_2D import Rectangle
 
 class Cube(Rectangle):
     def __init__(self, edge = float, x_value: float = 0, y_value: float = 0, z_value: float = 0) -> None:
-        super().__init__(x_value, y_value, z_value)
+        super().__init__(x_value, y_value)
         self.edge = edge
+        self.z_value = z_value
 
     @property
     def edge (self) -> float:
