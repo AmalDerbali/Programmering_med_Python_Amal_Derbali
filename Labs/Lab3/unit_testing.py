@@ -120,21 +120,57 @@ class TestRectangle(unittest.TestCase):
     
 
 class TestSphere(unittest.TestCase):
-
+    
     def setUp(self) -> None:
-        self.radius, self.x_value, self.y_value, self.z_value = 2, 3, 3, 3 
+        self.radius, self.x_value, self.y_value, self.z_value = 2, 1, 1, 1
     
-    def create_sphere(self) -> "Sphere": 
-        return (self.radius, self.x_value, self.y_value, self.z_value)
-    
-    def test_create_sphere(self) -> None:
-        sph = self.create_sphere()
-        self.assertEqual(sph.radius, self.radius), (sph.x_value, self.x_value), (sph.y_value, self.y_value), (sph.z_value, self.z_value)
-        
-        sph = Sphere()
-        self.assertEqual(sph.radius, sph.x_value, sph.y_value, sph.z_value), (2, 3, 4)
+    def create_sphere(self) -> "Sphere":
+        return Sphere(self.radius, self.x_value, self.y_value, self.z_value)
 
- 
+    def test_create_sphere(self):
+        sph = self.create_sphere()
+        self.assertEqual((sph.radius, sph.x_value, sph.y_value, sph.z_value), (self.radius, self.x_value, self.y_value, self.z_value))
+
+        sph = Sphere(3)
+        self.assertEqual((sph.radius, sph.x_value, sph.y_value, sph.z_value), (3, 0, 0, 0))
+    
+    def test_translate(self):
+        #tests if a TypeError is raised when entering a str in the parameter.
+        circ = self.create_sphere()        
+        with self.assertRaises(TypeError):
+            circ.translate("4", 2, -2)
+        with self.assertRaises(TypeError):
+            circ.translate(4, "2", 1)
+
+    def test_translate(self):
+        sph = self.create_sphere()        
+        sph.translate(3, 2, 1)
+        self.assertEqual((sph.x_value, sph.y_value, sph.z_value), (3, 2, 1))
+
+    def test_surface_area_sphere(self):
+        sph1 = Sphere(2.5)
+        self.assertAlmostEqual(sph1.surface_area_sphere(), 78.539816 , places = 6)
+
+    def test_volume_sphere(self):
+        sph2 = Sphere(2.5)
+        self.assertAlmostEqual(sph2.volume_sphere(), 65.4498, places = 4)   
+
+    def test_point_inside_sphere(self):
+        sph = self.create_sphere()
+        self.assertEqual(sph.point_inside_sphere(2, 1, 1), True)
+        self.assertEqual(sph.point_inside_sphere(1.3, -6, 3), False) 
+
+    def test_equality(self):
+        sph3 = Sphere(3, 2, 5, 1)
+        sph4 = Sphere(5, 2, 2, 3)
+        self.assertEqual(sph3 == sph4, False) 
+
+        sph = Sphere(4, 2, 3, 2)
+        rect = Rectangle(4, 2, 3, 2)
+        self.assertEqual(sph == rect, False)
+
+
+
     
 
 if __name__ == "__main__":
