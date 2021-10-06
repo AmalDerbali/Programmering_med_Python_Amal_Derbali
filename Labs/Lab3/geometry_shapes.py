@@ -1,10 +1,10 @@
 import math
  
-class GeometricClass:
+class GeometricClass: # sets values and validates them as numerical
     def __init__(self, x_value : float = 0, y_value: float = 0) -> None:
         self.x_value = x_value
         self.y_value = y_value
-    
+    # asigns them to private variables
     @property
     def x_value (self) -> float:
         return self._x_value
@@ -32,6 +32,7 @@ class GeometricClass:
         return self._y_value
     
     def translate(self, new_x, new_y) -> None:
+    # function to be able to change x and y values to new ones.
         if not isinstance (new_x, (int, float)):
             raise ValueError ("The value new_x must be int or float")
         if not isinstance (new_y, (int, float)):
@@ -63,10 +64,10 @@ class Circle (GeometricClass):
         return self._radius
     
 
-    def area_circle (self):
+    def area_circle (self): # calculates the area of the shape
         return ((self.radius**2)*math.pi)
     
-    def circumference_circle (self):
+    def circumference_circle (self): # calculates the circumference of the shape
         return (2*self.radius*math.pi)
 
     # checking if a point is inside the circle based on : 
@@ -80,6 +81,7 @@ class Circle (GeometricClass):
             return False
     
     def __eq__(self, other) -> bool:
+        # Checks if two geometrical shapes are congruents
         if type(self) != type(other):
             return False
 
@@ -97,6 +99,7 @@ class Circle (GeometricClass):
 
 
 class Rectangle (GeometricClass):
+    # set variables included the two sides of the rectangle
     def __init__ (self, side1: float, side2: float, x_value = 0, y_value = 0) -> None:
         super().__init__(x_value, y_value)
         self.side1 = side1
