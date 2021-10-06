@@ -1,4 +1,5 @@
-
+# try plotting sphere based on: 
+# https://stackoverflow.com/questions/11140163/plotting-a-3d-cube-a-sphere-and-a-vector-in-matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
